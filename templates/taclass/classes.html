@@ -1,0 +1,80 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Teacher Dashboard</h1>
+          <p class="lead">Your class will appear Here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+
+
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Welcome  </h2>
+         
+  <!-- Team -->
+  <section id="team" class="py-5">
+    <div class="container">
+      <h2 class="text-center"> Your Home School : Subjects </h2>
+      <hr>
+      <br>
+      <div class="row text-center">
+        {% if taclass %}
+          {% for taclas in taclass %}
+            <div class="col-md-4">
+                <a href="{% url 'subject' %}">
+              <img src="{{ taclas.classImage.url }}" alt="" class="rounded-circle mb-3">
+                </a>
+              <h4>{{realtor.name}}</h4>
+              <p class="text-success">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i> Subject </p>
+              <hr>
+              <p>
+                <i class="fa fa-cubes" aria-hidden="true"></i> Subject Name : {{taclas.subject}}</p>
+              <p>
+                <i class="fas fa-award text-success mb-3"></i> Faculty Name : {{taclas.teacherName}}</p>
+            </div>  
+          {% endfor %}
+        {% else %}
+          <div class="col-md-12">
+            <p>
+              No Class Created yet...
+            </p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

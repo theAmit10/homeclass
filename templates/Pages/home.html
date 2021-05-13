@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="home" >
+    <div class="teacher" width=50% height=50% ><i class="fas fa-align-left"></i>>
+        <a href="{% url 'login' %}">
+            <img src="{% static 'img/about.jpg' %}"  class="rounded float-right" alt="Student">
+            <br/>
+            <button type="button" class="btn btn-outline-dark" >Teacher</button>
+            <br/>
+        </a>
+    </div>
+    <br/>
+    <div >
+        <i class="fa fa-align-right" aria-hidden="true"></i>
+        <a href="{% url 'index' %}">
+            <img src="{% static 'img/showcase.jpg' %}"  class="rounded float-right" alt="Student">
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-outline-dark" >Student</button>
+            <br/>
+            <br/>
+        </a>
+    </div>
+</div>
+
+
+
+{% endblock content %}

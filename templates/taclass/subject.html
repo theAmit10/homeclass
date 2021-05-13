@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %} | User Dashboard {% endblock %}
+
+{% block styl %} {{ block.super }}  <link rel="stylesheet" href="{% static 'css/fileupload.css' %}"> {% endblock styl %}
+
+{% block content %}
+
+{% if taclass %}
+  {% for taclas in taclass %}
+    
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">{{taclas.subject}}</h1>
+        <p class="lead">{{taclas.teacherName}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'home' %}">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active"> Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+
+<section id="dashboard" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Welcome,<br/>  
+          {{ taclas.teacherName }}  </h2>
+        <hr>
+        <br/>
+          <!-- file upload itself is disabled in this pen -->
+          <div class="modal-body">
+            <form action="{% url 'subject' %}" method="POST" >
+              {% csrf_token %}
+              <div class="form-group">
+                <div class="fileupload">
+                  <h2>UPLOAD YOUR ASSIGNMENT  </h2>
+                  <input type="file" 
+                  class="filepond"
+                  name="filepond"
+                  multiple
+                  data-max-file-size="20MB"
+                  data-max-files="3" />
+              </div>
+              <div class="form-group">
+                <label for="message" class="col-form-label">Assignment Description :</label>
+                <textarea name="message" class="form-control"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label"  name="code" > ClassCode : {{taclas.classCode}}</label>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label"> Enter classCode :</label>
+                <input type="text" name="subjectCode" />
+              </div>
+              <hr>
+              <input type="submit" value="Send" class="btn btn-block btn-secondary">
+            </form>
+          </div>
+        </div>
+        <hr/>
+        <br/>
+      <div class="studentdetails">
+        <h2> <a href="{% url 'home' %}}"> STUDENTS </a> </h2>
+      </div>
+      <hr>
+      <br/>
+
+      <div class="startclass">
+        <h2> <a href="{% url 'home' %}}"> START CLASS </a> </h2>
+      </div>
+      <br/>
+      <hr>
+
+
+ 
+
+
+  {% endfor %}
+  {% else %}
+   <p> Not created a class  </p>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+
+{{ block.super }}  
+<script src="{% static 'js/fileupload.js' %}"></script>
+
+{% endblock javascript %}
