@@ -11,8 +11,7 @@ class Taclass(models.Model):
     classimage = models.ImageField(upload_to='photos/%Y/%m/%d/')
     teachername = models.CharField(max_length=100)
     section = models.CharField(max_length=100)
-    classtime = models.DateTimeField(default=datetime.now, blank=True)
-    classlink = models.CharField(max_length=500, blank=True)
+    
 
 
     def __str__(self):

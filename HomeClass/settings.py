@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'HomeClass.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'homeclass' ,
+        'NAME': 'school' ,
         'USER': 'postgres',
-        'PASSWORD': 'amit@123',
+        'PASSWORD': '12345',
         'HOST': 'localhost'
     }
 }
